@@ -9,14 +9,44 @@ namespace Internship.Institution
 {
     public class University
     {
-        public University(string name)
+        public List<Student> Students;
+
+        public string Name { get; set; }
+
+        public University(string Name)
         {
-            //TODO: Implementation is needed  
+            this.Name = Name;
+            this.Students = new List<Student>();
         }
 
-        public void AddStudent(Student student)
+        public void AddStudent(Student Student)
         {
-            //TODO: Implementation is needed
+            this.Students.Add(Student);
+        }
+
+        public double AverageScore()
+        {
+            double Score = 0;
+            double Average = 0;
+
+            foreach (Student Student in Students)
+            {
+                Score += Student.StudentKnowledge.Level;
+            }
+
+            Average = Score / Students.Count;
+
+            return Average;
+        }
+
+        public void ShowAllStudents()
+        {
+            Console.WriteLine("The list of {0} students:", Name);
+
+            foreach (Student Student in Students)
+            {
+                Console.WriteLine(Student.ToString());
+            }
         }
     }
 }

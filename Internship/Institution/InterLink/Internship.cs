@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Internship.Person;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,15 +9,36 @@ namespace Internship.Institution.InterLink
 {
     public class InternshipInCamp
     {
-        public InternshipInCamp(string name)
+        public List<Student> Students;
+
+        public string Name { get; set; }
+
+        public InternshipInCamp(string Name)
         {
-            //TODO: Implementation is needed      
+            this.Name = Name;
+            this.Students = new List<Student>();
         }
 
-        public string GetStudents()
+        public void StudentValidation(University University)
         {
-            //TODO: Implementation is needed
-            return "Andrew Maslenko\nJulia Veselkina\n";
+            foreach (Student Student in University.Students)
+            {
+                if (Student.StudentKnowledge.Level >= University.AverageScore())
+                {
+                    this.Students.Add(Student);
+                }
+            }
+        }
+
+        public void GetStudents()
+        {
+            Console.WriteLine("\nThe list of {0} Intership students:", Name);
+
+            foreach (Student Student in Students)
+            {
+                Console.WriteLine(Student.ToString());
+            }
+            Console.WriteLine();
         }
     }
 }

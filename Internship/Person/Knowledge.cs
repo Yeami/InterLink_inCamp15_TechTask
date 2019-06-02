@@ -8,9 +8,23 @@ namespace Internship.Person
 {
     public class Knowledge
     {
-        public Knowledge(int level)
+        private int level;
+
+        public int Level
         {
-            //TODO: Implementation is needed
+            set
+            {
+                if (value > 0 && value <= 100)
+                {
+                    level = value;
+                }
+            }
+            get { return level; }
+        }
+
+        public Knowledge(int Level)
+        {
+            this.Level = Level;
         }
     }
 }

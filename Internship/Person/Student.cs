@@ -8,14 +8,18 @@ namespace Internship.Person
 {
     public class Student
     {
-        public Student(string name)
+        public string Name { get; set; }
+        public Knowledge StudentKnowledge { get; set; }
+
+        public Student(string Name, int Level)
         {
-            //TODO: Implementation is needed
+            this.Name = Name;
+            this.StudentKnowledge = new Knowledge(Level);
         }
 
-        public void SetKnowledge(Knowledge knowledge)
+        public override string ToString()
         {
-            //TODO: Implementation is needed
+            return this.Name + " average score is " + this.StudentKnowledge.Level;
         }
     }
 }
